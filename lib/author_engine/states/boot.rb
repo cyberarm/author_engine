@@ -3,7 +3,6 @@ module AuthorEngine
     def setup
       @text = Chingu::Text.new("AuthorEngine - #{AuthorEngine::VERSION}", x: 100, y: 100, size: 50)
       @text_color = 0
-      AuthorEngine::Cursor.create
     end
 
     def draw

@@ -10,8 +10,15 @@ module AuthorEngine
     end
 
     def setup
+      super
       prepare if defined?(prepare)
-      level
+      begin
+        level
+      rescue NoMethodError,NameError => e
+        puts "AuthorEngine Error: method 'level' is missing from '#{self.class}'"
+        puts "Original Error: #{e}"
+        exit(1)
+      end
       self.viewport.lag = 0.5
       self.viewport.game_area = [0, 0, @world_size[0]*@tile_size, @world_size[1]*@tile_size]
       self.viewport.center_around(AuthorEngine::Player.all.first) if defined? AuthorEngine::Player.all.first.x
@@ -54,12 +61,10 @@ module AuthorEngine
     def update
       super
       self.viewport.center_around(AuthorEngine::Player.all.first) if defined? AuthorEngine::Player.all.first.x
-      $cursor.update
     end
 
     private
     def add_default_options options
-      p options
       options[:tile_size] = @tile_size
     end
   end

@@ -19,9 +19,3 @@ require "author_engine/objects/sign"
 require "author_engine/objects/spike"
 
 require "author_engine/menu/cursor"
-
-ObjectSpace.each_object(Class) do |c|
-  if c.to_s.start_with?("AuthorEngine")
-    p c
-  end
-end

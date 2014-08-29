@@ -2,9 +2,7 @@ module AuthorEngine
   class Player < AuthorEngine::GameObject
     trait :velocity
 
-    def setup
-      super
-      p @options
+    def prepare
       @speed = 3
       @jumping = false
       self.input = {
@@ -32,6 +30,9 @@ module AuthorEngine
 
       self.die if self.first_collision(Spike)
 
+      self.each_collision(Sign) do |player,sign|
+        sign.collision.call if defined?(sign.collision.call)
+      end
     end
 
     def die
@@ -43,7 +44,6 @@ module AuthorEngine
       unless @jumping
         @jumping = true
         self.velocity_y = -10
-      else
       end
     end
     def right
@@ -67,6 +67,7 @@ module AuthorEngine
     end
 
     def on_ground?
+      puts "h"
       self.first_collision(Block)
     end
   end

@@ -22,6 +22,8 @@ module AuthorEngine
       @destroyable= @options[:level_object].destroyable
 
       self.center_x,self.center_y = 0,0
+
+      prepare if defined?(self.prepare)
     end
   end
 end

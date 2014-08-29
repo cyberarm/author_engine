@@ -1,15 +1,14 @@
 module AuthorEngine
-  class Cursor < AuthorEngine::GameObject
+  class Cursor < Chingu::GameObject
     def setup
       $cursor = self
-      p AuthorEngine.cursor_image
       @image = Gosu::Image["#{AuthorEngine.cursor_image}"]
       self.center_x,self.center_y = 0,0
     end
 
     def update
-      self.x = mouse_x
-      self.y = mouse_y
+      self.x = $display.mouse_x
+      self.y = $display.mouse_y
     end
   end
 end
