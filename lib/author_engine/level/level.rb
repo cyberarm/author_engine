@@ -11,7 +11,6 @@ module AuthorEngine
 
     def setup
       super
-      prepare if defined?(prepare)
       begin
         level
       rescue NoMethodError,NameError => e

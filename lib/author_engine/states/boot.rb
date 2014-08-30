@@ -3,6 +3,7 @@ module AuthorEngine
     def setup
       @text = Chingu::Text.new("AuthorEngine - #{AuthorEngine::VERSION}", x: 100, y: 100, size: 50)
       @text_color = 0
+      @tick = 0
     end
 
     def draw
@@ -12,7 +13,8 @@ module AuthorEngine
 
     def update
       super
-      push_game_state(Game::BootGame)
+      push_game_state(Game::BootGame) if @tick <= 127
+      @tick+=1
     end
   end
 end

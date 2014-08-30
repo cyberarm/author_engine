@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "hashie"
   spec.add_dependency "multi_json"
   spec.add_dependency "publisher"
   spec.add_dependency "chingu", "~> 0.9rc9"

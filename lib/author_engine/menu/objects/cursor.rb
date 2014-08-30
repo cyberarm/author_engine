@@ -1,9 +1,12 @@
 module AuthorEngine
-  class Cursor < Chingu::GameObject
+  class Cursor < AuthorEngine::MenuObject
     def setup
-      $cursor = self
       @image = Gosu::Image["#{AuthorEngine.cursor_image}"]
       self.center_x,self.center_y = 0,0
+      self.zorder = Float::INFINITY
+    end
+    def draw
+      @image.draw(self.x, self.y, self.zorder) if $display.show_cursor
     end
 
     def update
