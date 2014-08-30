@@ -13,7 +13,7 @@ module AuthorEngine
 
     def update
       super
-      push_game_state(Game::BootGame) if @tick <= 127
+      push_game_state(Game::BootGame) if @tick >= 127
       @tick+=1
     end
   end
