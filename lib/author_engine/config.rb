@@ -14,4 +14,12 @@ module AuthorEngine
   def self.assets_path
     @assets_path
   end
+
+  def self.game_name=name
+    @game_name = name
+  end
+
+  def self.game_name
+    @game_name
+  end
 end
