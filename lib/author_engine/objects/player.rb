@@ -15,6 +15,8 @@ module AuthorEngine
       self.acceleration_y = 0.5
       self.max_velocity = 10
       self.rotation_center = :bottom_center
+      @original_x = self.x
+      @original_y = self.y
     end
 
     def update
@@ -36,8 +38,8 @@ module AuthorEngine
     end
 
     def die
-      self.x = 140
-      self.y = 0
+      self.x = @original_x
+      self.y = @original_y
     end
 
     def jump

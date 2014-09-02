@@ -14,9 +14,13 @@ module AuthorEngine
       begin
         level
       rescue NoMethodError,NameError => e
-        puts "AuthorEngine Error: method 'level' is missing from '#{self.class}'"
-        puts "Original Error: #{e}"
-        exit(1)
+        if e.to_s.include?("'level'")
+          puts "AuthorEngine Error: method 'level' is missing from '#{self.class}'"
+          puts "Original Error: #{e}"
+          exit(1)
+        else
+          raise
+        end
       end
       self.viewport.lag = 0.5
       self.viewport.game_area = [0, 0, @world_size[0]*@tile_size, @world_size[1]*@tile_size]

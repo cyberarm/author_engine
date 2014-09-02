@@ -12,6 +12,8 @@ module AuthorEngine
     def update
       super
       @label.update
+      @options.width  = @label.width
+      @options.string = @label.text
     end
   end
 end

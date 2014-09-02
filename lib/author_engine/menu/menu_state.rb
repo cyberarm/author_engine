@@ -8,12 +8,14 @@ module AuthorEngine
 
     def label(string="", options={}, &block)
       options[:block] = block
+      options[:type]  = :label
       object = AuthorEngine::MetaMenuObject.new(string,options)
       AuthorEngine::Label.create(object.options)
     end
 
     def button(string="", options={}, &block)
       options[:block] = block
+      options[:type]  = :button
       object = AuthorEngine::MetaMenuObject.new(string,options)
       AuthorEngine::Button.create(object.options)
     end
